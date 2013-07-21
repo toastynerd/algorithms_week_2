@@ -1,37 +1,39 @@
 #!/usr/bin/env ruby
+
 require_relative "lib/pivot_deque"
+
 @num_comparisons = 0
-def quick_sort(read_array, pivot_point)
-  puts "starting"
+
+def quick_sort(read_array)
   @num_comparisons += read_array.size - 1
   if read_array.size == 1
-    read_array
-  end
-  temp = Container::PivotDeque.new(0)
-  temp.push_front(read_array[pivot_point])
-  origin = 0
-  read_array.each do |item|
-    unless item == read_array[pivot_point]
-      if item > read_array[pivot_point]
+    return read_array 
+  else
+    print "."
+    temp =  Container::PivotDeque.new(0, read_array[0])
+    read_array.each do |item|
+      if item > temp.pivot_value()
         temp.push_back(item)
-      else
+      elsif item < temp.pivot_value()
         temp.push_front(item)
-        origin += 1
+      else
+        # do nothing if it's the pivot
       end
     end
+    quick_sort(temp.bottom_array())
+    quick_sort(temp.top_array())
+    total = temp.bottom_array + temp.top_array()
+    return total 
   end
-  puts temp
 end
 
-def shift(sub_array)
-
-end
-
-@my_array = [3,2,4,1,5]
+@my_array = [9,8,7,6,5,4,3,2,1]
+@array_2 = [1]
 # ARGF.readlines.each do |item|
 #   @my_array << item.to_i
 # end
 
-@my_array = quick_sort(@my_array,0)
+@my_array = quick_sort(@my_array)
+puts @my_array
 
 puts @num_comparisons

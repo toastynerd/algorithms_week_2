@@ -37,7 +37,7 @@ module Container
     end
 
     def bottom_array
-      @my_array[0..@pivot_location-1]
+      @my_array[0..(@pivot_location)]
     end
 
     def top_array
