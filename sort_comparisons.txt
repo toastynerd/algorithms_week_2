@@ -1,0 +1,9 @@
+first problem(pivot always on first element)
+164573
+
+second problem(pivot on last element)
+168958
+
+third problem(pivot on num/2 element)
+135569
+128465

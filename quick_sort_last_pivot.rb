@@ -3,15 +3,16 @@
 @num_comparisons = 0
 
 def quick_sort(array)
-  @num_comparisons += array.length - 1 
+  # @num_comparisons += array.length - 2 
   if array.length <= 1
    return array
   end
 
   less = Array.new
   more = Array.new
-  pivot = array[0]
+  pivot = array[array.length - 1]
   array.each do |item|
+    @num_comparisons += 1
     if item < pivot
       less << item
     elsif item > pivot
