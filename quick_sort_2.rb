@@ -22,7 +22,7 @@ def quick_sort(array)
 end
 
 @my_array = []
-ARGF.readlines.each do item
+ARGF.readlines.each do |item|
   @my_array << item.to_i
 end
   
